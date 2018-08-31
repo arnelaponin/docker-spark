@@ -16,6 +16,11 @@ This image contains the following softwares:
 Depending on the version of the Spark Image you want, please run the corresponding command.<br>
 Latest image is always the most recent version of Apache Spark available. As of 11th July, 2017 it is v2.2.0.
 
+### Apache Spark latest [i.e. v2.3.0]
+[Dockerfile for Apache Spark v2.3.0](https://github.com/ryandjf/docker-spark)
+
+    docker pull ryandjf/docker-spark
+
 ### Apache Spark latest [i.e. v2.2.0]
 [Dockerfile for Apache Spark v2.2.0](https://github.com/P7h/docker-spark)
 
