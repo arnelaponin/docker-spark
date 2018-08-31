@@ -14,7 +14,7 @@ ARG SBT_BINARY_ARCHIVE_NAME=sbt-$SBT_VERSION
 ARG SBT_BINARY_DOWNLOAD_URL=https://sbt-downloads.cdnedge.bluemix.net/releases/v${SBT_VERSION}/${SBT_BINARY_ARCHIVE_NAME}.tgz
 
 # Spark related variables.
-ARG SPARK_VERSION=2.3.0
+ARG SPARK_VERSION=2.3.1
 ARG SPARK_BINARY_ARCHIVE_NAME=spark-${SPARK_VERSION}-bin-hadoop2.7
 ARG SPARK_BINARY_DOWNLOAD_URL=https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/${SPARK_BINARY_ARCHIVE_NAME}.tgz
 
