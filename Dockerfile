@@ -11,7 +11,7 @@ ARG SCALA_BINARY_DOWNLOAD_URL=http://downloads.lightbend.com/scala/${SCALA_VERSI
 # SBT related variables.
 ARG SBT_VERSION=1.2.1
 ARG SBT_BINARY_ARCHIVE_NAME=sbt-$SBT_VERSION
-ARG SBT_BINARY_DOWNLOAD_URL=https://sbt-downloads.cdnedge.bluemix.net/releases/v${SBT_VERSION}/${SBT_BINARY_ARCHIVE_NAME}.tgz
+ARG SBT_BINARY_DOWNLOAD_URL=https://github.com/sbt/sbt/releases/download/v${SBT_VERSION}/${SBT_BINARY_ARCHIVE_NAME}.tgz
 
 # Spark related variables.
 ARG SPARK_VERSION=2.4.0
@@ -30,11 +30,13 @@ RUN apt-get -yqq update && \
     apt-get install -yqq vim screen tmux && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    rm -rf /tmp/* && \
-    wget -qO - ${SCALA_BINARY_DOWNLOAD_URL} | tar -xz -C /usr/local/ && \
-    wget -qO - ${SBT_BINARY_DOWNLOAD_URL} | tar -xz -C /usr/local/  && \
-    wget -qO - ${SPARK_BINARY_DOWNLOAD_URL} | tar -xz -C /usr/local/ && \
-    cd /usr/local/ && \
+    rm -rf /tmp/*
+
+RUN wget -qO - ${SCALA_BINARY_DOWNLOAD_URL} | tar -xz -C /usr/local/
+RUN wget -qO - ${SBT_BINARY_DOWNLOAD_URL} | tar -xz -C /usr/local/
+RUN wget -qO - ${SPARK_BINARY_DOWNLOAD_URL} | tar -xz -C /usr/local/
+
+RUN cd /usr/local/ && \
     ln -s ${SCALA_BINARY_ARCHIVE_NAME} scala && \
     ln -s ${SPARK_BINARY_ARCHIVE_NAME} spark && \
     cp spark/conf/log4j.properties.template spark/conf/log4j.properties && \
