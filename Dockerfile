@@ -39,9 +39,7 @@ RUN wget -qO - ${SPARK_BINARY_DOWNLOAD_URL} | tar -xz -C /usr/local/
 RUN cd /usr/local/ && \
     ln -s ${SCALA_BINARY_ARCHIVE_NAME} scala && \
     ln -s ${SPARK_BINARY_ARCHIVE_NAME} spark && \
-    cp spark/conf/log4j.properties.template spark/conf/log4j.properties && \
-    sed -i -e s/WARN/ERROR/g spark/conf/log4j.properties && \
-    sed -i -e s/INFO/ERROR/g spark/conf/log4j.properties
+    cp spark/conf/log4j.properties.template spark/conf/log4j.properties
 
 # We will be running our Spark jobs as `root` user.
 USER root
